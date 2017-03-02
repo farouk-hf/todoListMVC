@@ -17,9 +17,11 @@
 			</tr> 
 		</thead> 
 		<tbody>
-			<?php foreach ($data as $todo) { ?>
+			<?php 
+			$current = 0;
+			foreach ($data as $todo) { ?>
 			<tr> 
-				<th scope="row"><?=$todo->id?></th> 
+				<th scope="row"><?=$current?></th> 
 				<td><?=$todo->title?></td> 
 				<td>
 					<a href="" class="btn btn-success">View</a>
@@ -27,7 +29,8 @@
 					<a href="" class="btn btn-danger">Delete</a>
 				</td> 
 			</tr>
-			<?php } ?>
+			<?php 
+				$current++;} ?>
 		</tbody> 
 	</table>
 </div>
