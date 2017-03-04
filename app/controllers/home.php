@@ -1,8 +1,16 @@
 <?php
 
+require_once ('services/TodoService.php');
+
 class home extends Controller {
 
-	public function index(){
+	private $todoService;
+
+	public function index($notification = NULL){
+
+		$todoService = new TodoService;
+		$data = $todoService->fetchAll();
+		$data['notification'] = (boolean)$notification;
 		/*
 		$todos = [
 			$this->createModelInstance('Todo'),
@@ -14,7 +22,7 @@ class home extends Controller {
 		$todos[1]->init(1 , 'do homework');
 		$todos[2]->init(2 , 'hang out with Kelly');
 		*/
-		$this->renderView('index', $todos);
+		$this->renderView('index', $data);
 	}
 
 }

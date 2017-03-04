@@ -21,7 +21,7 @@
   		</div>
   		<div class="form-group" style="margin-bottom:15px">
 		    <label for="dueDate">Due date</label>
-		    <input class="form-control" type="datetime-local" name="dueDate">
+		    <input class="form-control" type="datetime-local" name="due_date" id="datePicker">
   		</div>
 		<button type="submit" class="btn btn-primary">Create</button>
 	</form>

@@ -3,15 +3,16 @@
 class Todo {
 	public $id;
 	public $title;
-	public $priority;
 	public $description;
-	public $dueDate;
+	public $priority;
+	public $due_date;
 
-	public function init($title , $priority ,$description , $dueDate){
+	public function init($id, $title, $description , $priority  , $due_date){
+		$this->id = $id;
 		$this->title = $title;
-		$this->priority = $priority;
 		$this->description = $description;
-		$this->dueDate = $dueDate;
+		$this->priority = $priority;
+		$this->due_date = $due_date;
 	}
 
 
