@@ -2,6 +2,7 @@
 <?php require_once 'home/header.php'; ?>
 
 	<h2 class="page-header">Create New Todo</h2>
+	<p class="text-muted">Create a new Todo here.</p>
 	<form action="/createNew" method="POST">
 		<div class="form-group" style="margin-bottom:15px">
 		    <label for="title">Title</label>
