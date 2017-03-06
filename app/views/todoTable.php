@@ -16,7 +16,7 @@
 require_once 'todoTable.php';
 
 $count = 0;
-foreach ($data as $todo) { 
+foreach ($data as $todo) {
 	if(is_a($todo, 'Todo')){ 
 ?>
 		<tr class="trow" id="<?=$todo->id?>">
@@ -33,12 +33,15 @@ $count++;}
 	
 		</tbody> 
 	</table>
-<?php if(isset($data['notification'])){ ?>
+<?php 
+	if(isset($data['notification'])){
+		if($data['notification'] != ""){ ?>
 		<div class="alert alert-success" id="alert" style="display: none;">
 			<?=$data['notification']?>
-			<button type="button" class="close" id="closeButton" aria-label="Close"><span aria-hidden="true">x</span></button>
+			<button type="button" class="close" id="alertClose" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 		</div>
 		
-<?php	}?>
+<?php } 
+	} ?>
 
 

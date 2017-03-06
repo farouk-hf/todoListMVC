@@ -15,7 +15,7 @@
   </head>
 
   <body>
-    <!--
+    
     <nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container">
         <div class="navbar-header">
@@ -29,14 +29,14 @@
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li class=""><a href="mvc/">my Todos</a></li>
-            <li><a href="mvc/createNew">Create new</a></li>
+            <li class=""><a href="http://todoList/">my Todos</a></li>
+            <li><a href="http://todoList/createNew">Create new</a></li>
           </ul>
         </div>
       </div>
     </nav>
-  -->
+
     <div class="row">
             <div class="col-md-12">
-              <div class="container">
+              <div id="container" class="container">
               <br><br>

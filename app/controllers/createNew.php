@@ -23,4 +23,5 @@ class createNew extends Controller{
 		}
 		return FALSE;
 	}
+
 }
