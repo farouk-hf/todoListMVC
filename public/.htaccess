@@ -7,6 +7,5 @@ RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule ^(.+)$ index.php?url=$1 [QSA,L]
 
 <Files javascript.js>
-        Order deny,allow
-        Allow from all
+    Allow from all
 </Files>

@@ -17,7 +17,7 @@ require_once 'todoTable.php';
 
 $count = 0;
 foreach ($data as $todo) { 
-	if(!is_bool($todo) && !is_null($todo)){ 
+	if(is_a($todo, 'Todo')){ 
 ?>
 		<tr class="trow" id="<?=$todo->id?>">
 			<th scope="row" id="id"><?=$count?></th> 

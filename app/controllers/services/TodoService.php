@@ -51,7 +51,7 @@ class TodoService{
 	}
 
 	public function searchByKey($key){
-		$query = "SELECT * FROM todo WHERE title LIKE %{$key}%";
+		$query = "SELECT * FROM todo WHERE title LIKE '%$key%'";
 		$output = [];
 		if($result = mysql_query($query)){
 			while($row = mysql_fetch_assoc($result)){

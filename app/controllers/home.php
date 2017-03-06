@@ -13,15 +13,20 @@ class home extends Controller {
 			$data['notification'] = "Todo successfully added!";
 		}
 		$this->renderView('index', $data);
+
 	}
 
 	public function delete($id){
-		$this->todoService = new TodoService;
-		if($this->todoService->deleteById($id)){
-			$data = $this->fetchAllTodos();
-			$data['notification'] = "Todo successfully deleted!";
-		}else die('delete dailed');
-		$this->renderView('todoTable', $data);
+		if($id != NULL){
+
+			$this->todoService = new TodoService;
+			if($this->todoService->deleteById($id)){
+				$data = $this->fetchAllTodos();
+				$data['notification'] = "Todo successfully deleted!";
+			}else die('delete dailed');
+			$this->renderView('todoTable', $data);
+
+		}
 	}
 
 	public function fetchAllTodos(){
@@ -31,6 +36,7 @@ class home extends Controller {
 	}
 
 	public function search($key){
+		$this->todoService = new TodoService;
 		if($data = $this->todoService->searchByKey($key)){
 			$data['notification'] = "results found.";
 		}else die('search failed');
