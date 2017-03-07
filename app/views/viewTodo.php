@@ -1,6 +1,6 @@
 <?php require_once 'home/header.php'; ?>
 
-	<h2 class="page-header">Todo : <?=$data->title?></h2>
+	<h2 class="page-header">TODO : <?=$data->title?></h2>
 	<p class="text-muted">Your can view this todo here.</p>
 	<ul class="list-group">
 		<li class="list-group-item">

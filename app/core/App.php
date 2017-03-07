@@ -1,5 +1,8 @@
 <?php
 
+/**
+* parses the url and uses it to call a specific method in a specific controller
+*/
 class App{
 
 	protected $controller = 'home';

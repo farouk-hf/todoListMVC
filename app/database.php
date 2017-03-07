@@ -1,5 +1,9 @@
 <?php
 
+/**
+*	sets the database up and connects to the database.
+*/
+
 $host = 'localhost';
 $user = 'root';
 $password = '';

@@ -3,7 +3,7 @@
 <div class="container">
 	<div class="container">
 		<br><br>
-	<h2 class="page-header">Create New Todo</h2>
+	<h2 class="page-header">CREATE NEW TODO</h2>
 	<p class="text-muted">Create a new Todo here.</p>
 	<form action="/createNew" method="POST">
 		<div class="form-group" style="margin-bottom:15px">

@@ -1,5 +1,8 @@
 <?php
 
+/**
+* Model class to represent a todo
+*/
 class Todo {
 	public $id;
 	public $title;
@@ -14,6 +17,4 @@ class Todo {
 		$this->priority = $priority;
 		$this->due_date = $due_date;
 	}
-
-
 }

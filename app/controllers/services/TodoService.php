@@ -1,5 +1,7 @@
 <?php
-
+/**
+* performs all the database queries
+*/
 
 require_once (dirname(__FILE__).'/../../models/Todo.php');
 
@@ -9,6 +11,9 @@ class TodoService{
 		
 	}
 
+	/**
+	* fetches all the todos from the database
+	*/
 	public function fetchAll(){
 		$query = "SELECT * FROM todo";
 		$output = [];
@@ -23,6 +28,13 @@ class TodoService{
 		else die(mysql_error());
 	}
 
+	/**
+	* fetches todos depending on  the given filters
+	* $starting : from which element ( in the database )
+	* $count : how many element
+	* $order : asc or desc
+	* $sort : priority to sort by
+	*/
 	public function fetchTodos($starting, $count, $sort=NULL, $order = NULL){
 
 		$query = "SELECT * FROM todo";
@@ -49,6 +61,10 @@ class TodoService{
 		else die(mysql_error());
 	}
 
+	/**
+	* persists a new todo in the database
+	* $todo : todo to be persisted
+	*/
 	public function addElement($todo){
 		$mysqldate = date( 'Y-m-d H:i:s', strtotime(str_replace('-', '/', $todo->due_date)));
 		$query = " INSERT INTO todo (title, description, priority, due_date) VALUES ('$todo->title' , '$todo->description' , '$todo->priority' , '$mysqldate')";
@@ -58,6 +74,10 @@ class TodoService{
 		} else return mysql_error();
 	}
 
+	/**
+	* fetches a todo having the given id
+	* $id:
+	*/
 	public function fetchById($id){
 		$query = "SELECT * FROM todo WHERE id = $id";
 		if($result = mysql_query($query)){
@@ -69,6 +89,10 @@ class TodoService{
 		} else die(mysql_error());
 	}
 
+	/**
+	* deletes the todo having the given id
+	* $id:
+	*/
 	public function deleteById($id){
 		$query = "DELETE FROM todo WHERE id=$id";
 		if(mysql_query($query) === TRUE){
@@ -76,6 +100,10 @@ class TodoService{
 		} else return mysql_error();
 	}
 
+	/**
+	* fetches all todos with a title containing the key.
+	* $key:
+	*/
 	public function searchByKey($key){
 		$query = "SELECT * FROM todo WHERE title LIKE '%$key%'";
 		$output = [];

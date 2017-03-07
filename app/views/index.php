@@ -36,7 +36,6 @@
 	    
 			<div class="row pull-right"> 
 				<button id="viewBtn" class="btn btn-success">View</button>
-				<button id="editBtn" class="btn btn-default">Edit</button>
 				<button id="deleteBtn" class="btn btn-danger">Delete</button>
 			</div>
 		<div id="tableContainer">

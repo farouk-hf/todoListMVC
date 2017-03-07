@@ -11,12 +11,19 @@ $(document).ready(function(){
 	
 });
 
+/**
+* sends a get request to the server when the selectbox order is changed.
+*/
 $('#selectOrder').on('change', function() {
 		console.log($(this).val()+'/');
   		$.get('http://todoList/home/getCurrentTodos/null/'+currentCount+'/'+$('#selectSort').val()+'/'+$('#selectOrder').val() , {} , function(data){
   			$('#tableContainer').html(data);
   		});
 });
+
+/**
+* sends a get request to the server when the selectbox sort is changed.
+*/
 $('#selectSort').on('change', function() {
 		console.log($(this).val()+'/');
   		$.get('http://todoList/home/getCurrentTodos/null/'+currentCount+'/'+$('#selectSort').val()+'/'+$('#selectOrder').val() , {} , function(data){
@@ -24,10 +31,9 @@ $('#selectSort').on('change', function() {
   		});
 });
 
-
-
-
-
+/**
+* highlights the cliqued row on the table
+*/
 $(document).delegate('.trow', 'click', function(){
     $('.trow').removeClass("active");
 	$(this).addClass("active");
@@ -36,14 +42,22 @@ $(document).delegate('.trow', 'click', function(){
 	console.debug(selected);
 });
 
+/**
+* close button of the notification
+*/
 $('#closeButton').click(function(){
 	$('#alert').hide('slow');
 	console.log('closed');
 });
 
+/**
+* stores the id of the selected todo.
+*/
 var selected;
 
-
+/**
+* on click listener for the delete button to send a get request to delete the selected todo
+*/
 $('#deleteBtn').click(function(){
 	$.get('http://todoList/home/delete/'+selected, {} , function(data){
 		$('#tableContainer').html(data);
@@ -54,30 +68,34 @@ $('#deleteBtn').click(function(){
 	});
 });
 
+/**
+* on click listener for the view button to send a get request to render the view of the selected todo
+*/
 $('#viewBtn').click(function(){
 	console.log('clicked');
 	$.get('http://todoList/viewTodo/index/'+selected, {} , function(data){
 		$('#container').html(data);
 	});
 });
-/*
-$('#editBtn').click(function(){
-	console.log('clicked');
-	$.get('http://todoList/editTodo/index/'+selected, {} , function(data){
-		$('#container').html(data);
-	});
-});
-*/
 
+/**
+* current page count
+*/
 var currentCount = 0;
+
+/**
+* on click listener to loads the next 10 todos
+*/
 $('#nextArr').click(function(){
 	if($('tbody').find('tr').length == 10){
 		currentCount = currentCount +10;
-		$.get('http://todoList/home/getCurrentTodos/Null/'+currentCount, {} , function(data){
+		$.get('http://todoList/home/getCurrentTodos/NULL/'+currentCount, {} , function(data){
 			$('#tableContainer').html(data);
 			console.log('got');
 		});
 		;
+	} else {
+		$('#nextArr').attr('disabled','disabled');
 	}
 
 	if($('tbody').find('tr').length < 10){
@@ -86,10 +104,13 @@ $('#nextArr').click(function(){
 	$('#prevArr').removeAttr('disabled');
 });
 
+/**
+* on click listener to loads the previous 10 todos
+*/
 $('#prevArr').click(function(){
 	if(currentCount>=10){
 		currentCount = currentCount -10;
-		$.get('http://todoList/home/getNextInList//'+currentCount, {} , function(data){
+		$.get('http://todoList/home/getCurrentTodos/NULL/'+currentCount, {} , function(data){
 			$('#tableContainer').html(data);
 		});
 		if(currentCount<=10){
@@ -101,23 +122,13 @@ $('#prevArr').click(function(){
 	$('#nextArr').removeAttr('disabled');
 });
 
-
-
-$("#searchBox").on("input", function() {
+/**
+* on change listener for the search box to load the todos containing the given key
+*/
+$("#searchBox").on("change", function() {
 	if($(this).val().length > 0){
 	   $.get('http://todoList/home/search/'+$(this).val(), {} , function(data){
 			$('#tableContainer').html(data);
 		});
    }
 });
-
-function fetchTodos(id){
-	$.get('http://todoList/home/deleteById/'+id, {} , function(data){
-		$('#tableContainer').load(data);
-	});
-}
-
-function setButtonsLink(id){
-	$('#viewBtn').attr('href' , 'http://todoList/viewTodo/index/'+id);
-	$('#editBtn').attr('href' , 'http://todoList/editTodo/index/'+id);
-}
